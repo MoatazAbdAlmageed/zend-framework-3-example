@@ -1,0 +1,25 @@
+version: '3'
+services:
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      APP_ENV: docker
+    volumes:
+      - .:/var/www
+    ports:
+      - "8080:80"
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: app
+      MYSQL_USER: app
+      MYSQL_PASSWORD: app
+    volumes:
+      - .db:/var/lib/mysql
+    ports:
+      - "3306:3306"
