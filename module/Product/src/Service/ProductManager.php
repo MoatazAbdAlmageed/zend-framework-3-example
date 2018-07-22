@@ -2,6 +2,7 @@
 namespace Product\Service;
 
 use Category\Entity\Category;
+use Doctrine\ORM\EntityManager;
 use Product\Entity\Product;
 use Zend\Filter\StaticFilter;
 
@@ -13,10 +14,10 @@ class ProductManager
      * @var Doctrine\ORM\EntityManager
      */
     private $entityManager;
-
     // Constructor is used to inject dependencies into the service.
-    public function __construct($entityManager)
+    public function __construct(EntityManager $entityManager)
     {
+
         $this->entityManager = $entityManager;
     }
 

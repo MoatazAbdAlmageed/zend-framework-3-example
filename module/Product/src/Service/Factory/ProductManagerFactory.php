@@ -2,8 +2,8 @@
 namespace Product\Service\Factory;
 
 use Interop\Container\ContainerInterface;
+use Product\Service\ProductManager;
 use Zend\ServiceManager\Factory\FactoryInterface;
-use Category\Service\CategoryManager;
 
 /**
  * This is the factory for ProductManager. Its purpose is to instantiate the
@@ -16,6 +16,6 @@ class ProductManagerFactory implements FactoryInterface
     {
         $entityManager = $container->get('doctrine.entitymanager.orm_default');
         // Instantiate the service and inject dependencies
-        return new CategoryManager($entityManager);
+        return new ProductManager($entityManager);
     }
 }

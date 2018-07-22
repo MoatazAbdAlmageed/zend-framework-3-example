@@ -53,7 +53,7 @@ class CategoryController extends AbstractActionController
         // Check whether this category is a POST request.
         if ($this->getRequest()->isPost()) {
 
-            // Get POST data.
+            // Get  data.
             $data = $this->params()->fromPost();
 
 
@@ -63,8 +63,6 @@ class CategoryController extends AbstractActionController
                 // Get validated form data.
                 $data = $form->getData();
 
-//                $data['category_id'] = (int) $data['category_id'];
-                // Use category manager service to add new category to database.
                 $this->categoryManager->addNewCategory($data);
                 // Redirect the user to "index" page.
                 return $this->redirect()->toRoute('category');
@@ -77,7 +75,6 @@ class CategoryController extends AbstractActionController
             'form' => $form,
         ]);
 
-        // $view->setTemplate('add');
 
         return $view;
     }
@@ -153,7 +150,6 @@ class CategoryController extends AbstractActionController
             'category' => $category
         ]);
 
-        // $view->setTemplate('edit');
         return $view ;
     }
 

@@ -2,10 +2,11 @@
 
 namespace Product\Controller;
 use Category\Entity\Category;
+use DoctrineORMModule\Options\EntityManager;
+
 use function PHPSTORM_META\type;
 
 use Product\Entity\Product;
-use Doctrine\ORM\EntityManager;
 use Product\Form\CategoryForm;
 use Product\Form\ProductForm;
 use Product\Service\ProductManager;
@@ -21,7 +22,7 @@ class ProductController extends AbstractActionController
 
 
 
-    public function __construct( $productManager ,  $entityManager)
+    public function __construct(ProductManager $productManager , \Doctrine\ORM\EntityManager  $entityManager)
     {
 
         $this->productManager = $productManager;
@@ -141,6 +142,8 @@ class ProductController extends AbstractActionController
                 $data = $form->getData();
 
                 // Use product manager service to add new product to database.
+
+
                 $this->productManager->updateProduct($product, $data);
 
                 // Redirect the user to "admin" page.
